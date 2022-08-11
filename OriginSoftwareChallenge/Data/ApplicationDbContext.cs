@@ -8,7 +8,6 @@ namespace OriginSoftwareChallenge.Data
         public ApplicationDbContext(DbContextOptions options) : base(options)
         {
         }
-
         public DbSet<Tarjeta> Tarjetas { get; set; }
         public DbSet<Operacion> Operaciones { get; set; }
 

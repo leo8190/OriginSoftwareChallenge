@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using OriginSoftwareChallenge.Data;
-using OriginSoftwareChallenge.Interfaces;
 using OriginSoftwareChallenge.Models;
 using System;
 using System.Collections.Generic;
@@ -9,15 +8,15 @@ using System.Threading.Tasks;
 
 namespace OriginSoftwareChallenge.Repositorios
 {
-    public class RepositorioNroTarjeta : ApplicationDbContext
+    public class RepositorioTarjeta : ApplicationDbContext
     {
         DbContextOptions _options;
-        public RepositorioNroTarjeta(DbContextOptions options) : base(options)
+        public RepositorioTarjeta(DbContextOptions options) : base(options)
         {
             _options = options;
         }
 
-        public Tarjeta ExisteNroTarjetaDesbloqueada(decimal nroTarjeta)
+        public Tarjeta EncontrarTarjetaDesbloqueada(decimal nroTarjeta)
         {
             Tarjeta tarjeta;
             using (var db = new ApplicationDbContext(_options))
@@ -74,6 +73,18 @@ namespace OriginSoftwareChallenge.Repositorios
                 db.SaveChanges();
             }
             return operacion;
+        }
+
+        public void BloquearTarjeta(decimal nroTarjetaDecimal)
+        {
+            var tarjeta = GetTarjeta(nroTarjetaDecimal);
+
+            tarjeta.IsBlocked = true;
+            using (var db = new ApplicationDbContext(_options))
+            {
+                db.Tarjetas.Update(tarjeta);
+                db.SaveChanges();
+            }
         }
     }
 }
