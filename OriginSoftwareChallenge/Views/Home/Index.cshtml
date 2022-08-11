@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<script type="text/javascript">
+    function isNumber(evt) {
+        evt = (evt) ? evt : window.event;
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+            return false;
+        }
+        return true;
+    }
+
+    function Limpiar() {
+        document.getElementById("nroTarjeta").value="";
+    }
+
+    function addHyphen (element) {
+    	let ele = document.getElementById(element.id);
+        ele = ele.value.split('-').join('');    // Remove dash (-) if mistakenly entered.
+
+        let finalVal = ele.match(/.{1,4}/g).join('-');
+        document.getElementById(element.id).value = finalVal;
+    }
+</script>
+
+@using (@Html.BeginForm("ValidarNroTarjeta", "Home", FormMethod.Post))
+{
+    <h1 class="display-4">ATM</h1>
+    <label for="nroTarjeta">Número de tarjeta</label>
+    <input id="nroTarjeta" name="nroTarjeta" type="text" maxlength="19" onkeyup="addHyphen(this)" onkeypress="return isNumber(event)"/>    
+    <input value="Aceptar" type="submit" />
+}
+
+<button onclick="Limpiar()">Limpiar</button>
+

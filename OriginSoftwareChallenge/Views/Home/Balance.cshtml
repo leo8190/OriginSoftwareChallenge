@@ -1,0 +1,10 @@
+﻿@model Tarjeta
+
+<h4>Información de la tarjeta</h4>
+<p>Numero: @Model.Nro</p>
+<p>Fecha de vencimiento: @Model.FechaVencimiento.ToShortDateString()</p>
+<p>Balance: $ @Model.Balance.ToString("0.#####")</p>
+
+
+@*<a class="bottomNav" onclick="history.go(-1); return false;" href="#">Back</a><br />
+*@<a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Salir</a>

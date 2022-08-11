@@ -1,0 +1,31 @@
+﻿@model Tarjeta
+
+@{
+    ViewData["Title"] = "Retiro";
+}
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4.3.2/css/metro-all.min.css">
+    <script src="https://cdn.metroui.org.ua/v4.3.2/js/metro.min.js"></script>
+</head>
+
+<h1>Retiro</h1>
+
+@using (@Html.BeginForm("RetirarDinero", "Home", FormMethod.Post))
+{
+    <input type="text" name="montoARetirar" id="montoARetirar" data-role="keypad" data-position="bottom" placeholder="Ingresar monto a retirar">
+    <input type="hidden" value="@Model.Nro" id="nroTarjeta" name="nroTarjeta"/>
+    <input value="Aceptar" type="submit" />
+}
+<a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Salir</a>
+
+
+
+
+
+ 
+
+
+
+

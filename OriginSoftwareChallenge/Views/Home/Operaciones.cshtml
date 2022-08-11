@@ -1,0 +1,22 @@
+﻿@model Tarjeta
+
+@{
+    ViewData["Title"] = "Operaciones";
+}
+
+<h1>Operaciones</h1>
+
+@using (@Html.BeginForm("Balance", "Home", FormMethod.Post))
+{   
+    <input type="hidden" value="@Model.Nro" id="nroTarjeta" name="nroTarjeta"/>
+    <input value="Balance" type="submit" />
+}
+
+@using (@Html.BeginForm("Retiro", "Home", FormMethod.Post))
+{   
+    <input type="hidden" value="@Model.Nro" id="nroTarjeta" name="nroTarjeta"/>
+    <input value="Retiro" type="submit" />
+}
+
+<a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Salir</a>
+

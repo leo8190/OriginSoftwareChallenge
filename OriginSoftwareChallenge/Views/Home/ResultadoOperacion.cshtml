@@ -1,0 +1,11 @@
+﻿@model Operacion
+
+<h4>Información de la operación</h4>
+<p>ID Tarjeta: @Model.IdTarjeta</p>
+<p>Fecha y hora: @Model.FechaYHora</p>
+<p>Codigo Operación: @Model.Codigo</p>
+<p>Cantidad retirada: $ @Model.DineroRetirado</p>
+<p>Cantidad restante: $ @Model.DineroRestante.ToString("0.#####")</p>
+<p>Nro. Tarjeta: @Model.NroTarjeta</p>
+
+<a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Salir</a>
